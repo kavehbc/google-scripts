@@ -1,4 +1,14 @@
-function CoinMarketCap(crypto = "bitcoin") {
+/*
+CoinMarketCap
+Crypto price extractor
+
+Parameters:
+crypto: It should match with coinmarketcap.com names. e.g. bitcoin, ethereum, solana, cardano, etc.
+cache_duration: Caching duration in minutes (default: 60 minutes)
+live: Set to true if you want to skip the caching (default: false)
+*/
+
+function CoinMarketCap(crypto = "bitcoin", cache_duration=60, live = false) {
     const url = "https://coinmarketcap.com/currencies/" + crypto + "/";
 
     if (!crypto || crypto === "") {
@@ -8,8 +18,9 @@ function CoinMarketCap(crypto = "bitcoin") {
     // If there is data in cache, return directly.
     const cacheId = "CoinMarketCap_" + crypto;
     let cache = CacheService.getDocumentCache();
+
     var cached = cache.get(cacheId);
-    if (cached != null) {
+    if ((cached != null) && (live == false)) {
         let value = parseFloat(cached);
         if (!Number.isNaN(value)) {
             // For this API the value is returned in this format.
@@ -29,13 +40,10 @@ function CoinMarketCap(crypto = "bitcoin") {
     if (index_start >= 0) {
         var index_end = html.indexOf(searchstring_end, index_start);
         var pos = index_start + searchstring_start.length
-            var price = html.substring(pos, index_end);
+        var price = html.substring(pos, index_end);
         var price = Number(price.replace(/[^0-9.-]+/g, ""));
 
-        // Put API response text to cache with timeout of 1 hour
-        // Note: this value can be made as a variable too with some default value for
-        // different cache duration.
-        let cacheDuration = 60 * 60 * 1;
+        let cacheDuration = 60 * cache_duration;
         cache.put(cacheId, price, cacheDuration);
 
         Logger.log(parseFloat(price));
