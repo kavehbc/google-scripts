@@ -1,9 +1,17 @@
+/*
+Newton.co
+Crypto price extractor
+
+Parameters:
+crypto: Passing crypto acronyms. e.g. BTC, ETH, SOL, ADA, etc.
+price: either "spot", "bid", "ask", "change", or "supply" (default: spot)
+cache_duration: Caching duration in minutes (default: 60 minutes)
+live: Set to true if you want to skip the caching (default: false)
+*/
+
 function newton(crypto = "BTC", price = "spot", cache_duration = 60, live = false) {
     const url = "https://api.newton.co/dashboard/api/rates/";
 
-    // Put API response text to cache with timeout in minutes
-    // Note: this value can be made as a variable too with some default value for
-    // different cache duration.
     let cacheDuration = 60 * cache_duration;
 
     if (!crypto || crypto === "") {
@@ -13,13 +21,9 @@ function newton(crypto = "BTC", price = "spot", cache_duration = 60, live = fals
     // If there is data in cache, return directly.
     const cacheId = "Newton_json";
     let cache = CacheService.getDocumentCache();
-    if (live) {
-        cache.remove(cacheId);
-    }
-
     var cached = cache.get(cacheId);
 
-    if (cached != null) {
+    if ((cached != null) && (live == false)) {
         Logger.log("Cache");
         var json_text = cached;
     } else {
