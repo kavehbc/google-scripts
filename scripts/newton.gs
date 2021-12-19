@@ -9,7 +9,7 @@ cache_duration: Caching duration in minutes (default: 60 minutes)
 live: Set to true if you want to skip the caching (default: false)
  */
 
-function newton(crypto = "BTC", price = "spot", cache_duration = 60, live = true) {
+function newton(crypto = "BTC", price = "spot", cache_duration = 60, live = false) {
     const url = "https://api.newton.co/dashboard/api/rates/";
 
     let cacheDuration = 60 * cache_duration;
