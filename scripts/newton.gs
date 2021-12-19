@@ -1,6 +1,6 @@
 /*
 Newton.co
-Crypto price extractor
+Crypto price extractor in CAD (Canadian Dollar) from Newton.co
 
 Parameters:
 crypto: Passing crypto acronyms. e.g. BTC, ETH, SOL, ADA, etc.
