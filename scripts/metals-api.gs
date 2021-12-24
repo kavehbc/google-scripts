@@ -7,7 +7,7 @@ function metals(symbol = "XAU", cache_duration = 24) {
     const symbols = "XAU,XAG,XPT";
 
     if (!symbol || symbol === "") {
-        return "symbol is mandatory"
+        return "symbol is mandatory";
     }
     var json_text = "";
 
