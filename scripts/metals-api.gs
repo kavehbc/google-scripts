@@ -3,7 +3,7 @@
  * Precious Metal Price
  *
  * @param {string} sympol (e.g. 'XAU': Gold) For more details, check metals-api.com
- * @param {number} cache_duration Caching duration in minutes (default: 60 minutes)
+ * @param {number} cache_duration Caching duration in hours (default: 24 hours)
  * @return The metal price in USD
  * @customfunction
  */
