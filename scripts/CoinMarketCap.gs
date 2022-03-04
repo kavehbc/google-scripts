@@ -1,13 +1,13 @@
-/*
-CoinMarketCap
-Crypto price extractor
-
-Parameters:
-crypto: It should match with coinmarketcap.com names. e.g. bitcoin, ethereum, solana, cardano, etc.
-cache_duration: Caching duration in minutes (default: 60 minutes)
-live: Set to true if you want to skip the caching (default: false)
-*/
-
+/**
+ * CoinMarketCap
+ * Crypto Price Parser
+ *
+ * @param {string} crypto The crypto name from CoinMarketCap
+ * @param {number} cache_duration Caching duration in minutes (default: 60 minutes)
+ * @param {bool} live Set to true if you want to skip the caching (default: false)
+ * @return The price of crypto in USD
+ * @customfunction
+ */
 function CoinMarketCap(crypto = "bitcoin", cache_duration=60, live = false) {
     const url = "https://coinmarketcap.com/currencies/" + crypto + "/";
 
