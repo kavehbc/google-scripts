@@ -4,7 +4,7 @@
  *
  * @param {string} crypto The crypto symbol from Newton.co (e.g. BTC, ETH, SOL, ADA)
  * @param {string} price It is either "spot", "bid", "ask", "change", or "supply" (default: spot)
- * @param {number} cache_duration Caching duration in minutes (default: 60 minutes)
+ * @param {number} cache_duration Caching duration in minutes (default: 30 minutes)
  * @param {bool} live Set to true if you want to skip the caching (default: false)
  * @return The price of crypto in CAD
  * @customfunction
