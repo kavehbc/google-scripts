@@ -13,7 +13,7 @@ function Kitco(metal = "AU", price_type = "bid", cache_duration = 60, live = fal
     const url = "https://www.kitco.com/market/";
 
     if (!metal || metal === "") {
-        return "metal is mandatory"
+        return "metal is mandatory";
     }
 
     // If there is data in cache, return directly.
@@ -42,7 +42,7 @@ function Kitco(metal = "AU", price_type = "bid", cache_duration = 60, live = fal
     var index_start = html.indexOf(searchstring_start);
     if (index_start >= 0) {
         var index_end = html.indexOf(searchstring_end, index_start);
-        var pos = index_start + searchstring_start.length
+        var pos = index_start + searchstring_start.length;
         var price = html.substring(pos, index_end);
         var price = Number(price.replace(/[^0-9.-]+/g, ""));
 
