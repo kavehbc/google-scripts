@@ -12,7 +12,7 @@ function CoinMarketCap(crypto = "bitcoin", cache_duration=60, live = false) {
     const url = "https://coinmarketcap.com/currencies/" + crypto + "/";
 
     if (!crypto || crypto === "") {
-        return "crypto is mandatory"
+        return "crypto is mandatory";
     }
 
     // If there is data in cache, return directly.
@@ -39,7 +39,7 @@ function CoinMarketCap(crypto = "bitcoin", cache_duration=60, live = false) {
     var index_start = html.indexOf(searchstring_start);
     if (index_start >= 0) {
         var index_end = html.indexOf(searchstring_end, index_start);
-        var pos = index_start + searchstring_start.length
+        var pos = index_start + searchstring_start.length;
         var price = html.substring(pos, index_end);
         var price = Number(price.replace(/[^0-9.-]+/g, ""));
 
