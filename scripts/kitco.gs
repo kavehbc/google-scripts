@@ -1,15 +1,15 @@
-/*
-Kitco
-Precious Metal Price
-
-Parameters:
-metal: 'AU': Gold, 'AG': Silver, 'PT': Platinum, 'PD': Paladium, or 'RH': Rhodium
-price_type: 'bid', 'ask'
-cache_duration: Caching duration in minutes (default: 60 minutes)
-live: Set to true if you want to skip the caching (default: false)
-*/
-
-function Kitco(metal = "AU", price_type = "bid", cache_duration = 60, live = false) {
+/**
+ * Kitco
+ * Precious Metal Price
+ *
+ * @param {string} metal 'AU': Gold, 'AG': Silver, 'PT': Platinum, 'PD': Paladium, or 'RH': Rhodium
+ * @param {string} price_type 'bid', or 'ask'
+ * @param {number} cache_duration Caching duration in minutes (default: 60 minutes)
+ * @param {bool} live Set to true if you want to skip the caching (default: false)
+ * @return The metal price in USD
+ * @customfunction
+ */
+function MetalPrice(metal = "AU", price_type = "bid", cache_duration = 60, live = false) {
     const url = "https://www.kitco.com/market/";
 
     if (!metal || metal === "") {
