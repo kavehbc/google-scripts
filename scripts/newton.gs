@@ -1,21 +1,21 @@
-/*
-Newton.co
-Crypto price extractor in CAD (Canadian Dollar) from Newton.co
-
-Parameters:
-crypto: Passing crypto acronyms. e.g. BTC, ETH, SOL, ADA, etc.
-price: either "spot", "bid", "ask", "change", or "supply" (default: spot)
-cache_duration: Caching duration in minutes (default: 60 minutes)
-live: Set to true if you want to skip the caching (default: false)
+/**
+ * Newton.co
+ * Crypto Price Parser (CAD)
+ *
+ * @param {string} crypto The crypto symbol from Newton.co (e.g. BTC, ETH, SOL, ADA)
+ * @param {string} price It is either "spot", "bid", "ask", "change", or "supply" (default: spot)
+ * @param {number} cache_duration Caching duration in minutes (default: 60 minutes)
+ * @param {bool} live Set to true if you want to skip the caching (default: false)
+ * @return The price of crypto in CAD
+ * @customfunction
  */
-
-function newton(crypto = "BTC", price = "spot", cache_duration = 60, live = false) {
+function newton(crypto = "BTC", price = "spot", cache_duration = 30, live = false) {
     const url = "https://api.newton.co/dashboard/api/rates/";
 
     let cacheDuration = 60 * cache_duration;
 
     if (!crypto || crypto === "") {
-        return "crypto is mandatory";
+        return "crypto is mandatory"
     }
 
     // If there is data in cache, return directly.
