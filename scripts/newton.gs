@@ -15,7 +15,7 @@ function newton(crypto = "BTC", price = "spot", cache_duration = 60, live = fals
     let cacheDuration = 60 * cache_duration;
 
     if (!crypto || crypto === "") {
-        return "crypto is mandatory"
+        return "crypto is mandatory";
     }
 
     // If there is data in cache, return directly.
