@@ -1,3 +1,12 @@
+/**
+ * Metals-API.com
+ * Precious Metal Price
+ *
+ * @param {string} sympol (e.g. 'XAU': Gold) For more details, check metals-api.com
+ * @param {number} cache_duration Caching duration in minutes (default: 60 minutes)
+ * @return The metal price in USD
+ * @customfunction
+ */
 function metals(symbol = "XAU", cache_duration = 24) {
 
     //Google Script for https://www.metals-api.com/ with 24 hours cache
