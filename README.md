@@ -9,6 +9,9 @@ This function gets the current price of cryptocurrencies from CoinMarketCap.com 
 ### Newton.co
 This function gets the current price of cryptocurrencies from Newton.co in CAD.
 
+### KuCoin
+This function gets the account details (balance) of KuCoin.
+
 ## Precious Metal
 
 ### Kitco.com
