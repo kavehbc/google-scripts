@@ -12,6 +12,9 @@ This function gets the current price of cryptocurrencies from Newton.co in CAD.
 ### KuCoin
 This function gets the account details (balance) of KuCoin.
 
+### Anchor Protocol
+This fuction retrieves the AnchorUST/UST exchange rate.
+
 ## Precious Metal
 
 ### Kitco.com
