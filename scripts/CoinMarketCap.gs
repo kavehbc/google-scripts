@@ -3,12 +3,12 @@
  * Crypto Price Parser
  *
  * @param {string} crypto The crypto name from CoinMarketCap
- * @param {number} cache_duration Caching duration in minutes (default: 60 minutes)
+ * @param {number} cache_duration Caching duration in minutes (default: 10 minutes)
  * @param {bool} live Set to true if you want to skip the caching (default: false)
  * @return The price of crypto in USD
  * @customfunction
  */
-function CoinMarketCap(crypto = "bitcoin", cache_duration=60, live = false) {
+function CoinMarketCap(crypto = "bitcoin", cache_duration=10, live = false) {
     const url = "https://coinmarketcap.com/currencies/" + crypto + "/";
 
     if (!crypto || crypto === "") {
@@ -34,7 +34,7 @@ function CoinMarketCap(crypto = "bitcoin", cache_duration=60, live = false) {
     }
 
     var html = response.getContentText();
-    var searchstring_start = 'class="priceValue "><span>';
+    var searchstring_start = '<!-- -->$';
     var searchstring_end = '</span>';
     var index_start = html.indexOf(searchstring_start);
     if (index_start >= 0) {
