@@ -4,13 +4,13 @@
  *
  * @param {string} crypto The crypto symbol from Newton.co (e.g. BTC, ETH, SOL, ADA)
  * @param {string} price It is either "spot", "bid", "ask", "change", or "supply" (default: spot)
- * @param {number} cache_duration Caching duration in minutes (default: 30 minutes)
+ * @param {number} cache_duration Caching duration in minutes (default: 10 minutes)
  * @param {bool} live Set to true if you want to skip the caching (default: false)
  * @return The price of crypto in CAD
  * @customfunction
  */
-function newton(crypto = "BTC", price = "spot", cache_duration = 30, live = false) {
-    const url = "https://api.newton.co/dashboard/api/rates/";
+function newton(crypto="BTC", price="bid", cache_duration=10, live=false) {
+    const url = "https://api.newton.co/markets/v1.1/rates/";
 
     let cacheDuration = 60 * cache_duration;
 
@@ -52,14 +52,13 @@ function newton(crypto = "BTC", price = "spot", cache_duration = 30, live = fals
         }
         var json_text = response.getContentText();
         cache.put(cacheId, json_text, cacheDuration);
-
     }
 
     var data = JSON.parse(json_text);
 
-    for (let i = 0; i < data.rates.length; i++) {
-        const coin = data.rates[i];
-        if (coin["from"] === 'CAD' && coin["to"] === crypto) {
+    for (let i = 0; i < data.length; i++) {
+        const coin = data[i];
+        if (coin["symbol"] === crypto + "_CAD") {
             price = coin[price];
         }
     }
