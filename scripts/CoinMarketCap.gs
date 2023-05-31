@@ -8,8 +8,10 @@
  * @return The price of crypto in USD
  * @customfunction
  */
-function CoinMarketCap(crypto = "bitcoin", cache_duration=10, live = false) {
+function CoinMarketCap(crypto="bitcoin", cache_duration=5, live=false) {
     const url = "https://coinmarketcap.com/currencies/" + crypto + "/";
+
+    Logger.log(url)
 
     if (!crypto || crypto === "") {
         return "crypto is mandatory";
@@ -24,6 +26,8 @@ function CoinMarketCap(crypto = "bitcoin", cache_duration=10, live = false) {
         let value = parseFloat(cached);
         if (!Number.isNaN(value)) {
             // For this API the value is returned in this format.
+            Logger.log("OFFLINE");
+            Logger.log(value)
             return value;
         }
     }
@@ -34,9 +38,10 @@ function CoinMarketCap(crypto = "bitcoin", cache_duration=10, live = false) {
     }
 
     var html = response.getContentText();
-    var searchstring_start = '<!-- -->$';
-    var searchstring_end = '</span>';
+    var searchstring_start = "price today is $";
+    var searchstring_end = " USD";
     var index_start = html.indexOf(searchstring_start);
+    // Logger.log(index_start);
     if (index_start >= 0) {
         var index_end = html.indexOf(searchstring_end, index_start);
         var pos = index_start + searchstring_start.length;
@@ -46,14 +51,10 @@ function CoinMarketCap(crypto = "bitcoin", cache_duration=10, live = false) {
         let cacheDuration = 60 * cache_duration;
         cache.put(cacheId, price, cacheDuration);
 
+        Logger.log("ONLINE");
         Logger.log(parseFloat(price));
         let value = parseFloat(price);
-        if (Number.isNaN(value)) {
-            return "NaN";
-        }
-
         return value;
-
     } else {
         return "NaN";
     }
