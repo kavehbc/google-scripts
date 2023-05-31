@@ -1,10 +1,15 @@
 # Google Scripts
-Here are few Google Scripts:
+
+Here are a few Google Scripts to retrieve and parse financial data.
 
 ## Crypto
 
 ### CoinMarketCap
 This function gets the current price of cryptocurrencies from CoinMarketCap.com in USD.
+
+### CoinGecko
+This function gets the current price of cryptocurrencies from CoinGecko.com Public API in the selected currency.
+More details: https://www.coingecko.com/en/api/documentation
 
 ### Newton.co
 This function gets the current price of cryptocurrencies from Newton.co in CAD.
@@ -14,6 +19,8 @@ This function gets the account details (balance) of KuCoin.
 
 ### Anchor Protocol
 This fuction retrieves the AnchorUST/UST exchange rate.
+
+> :warning: UST has collapsed the lost the peg to the US dollar in May 2022.
 
 ## Precious Metal
 
