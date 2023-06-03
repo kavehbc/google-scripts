@@ -10,7 +10,7 @@
  * @return The price of crypto in the selected currency
  * @customfunction
  */
-function CoinGecko(crypto="bitcoin", currency="cad", cache_duration=30, live=false) {
+function CoinGecko(crypto="bitcoin", currency="cad", cache_duration=30, live=true) {
   url = "https://api.coingecko.com/api/v3/simple/price?ids=" + crypto + "&vs_currencies=" + currency;
   Logger.log(url);
 
@@ -32,15 +32,16 @@ function CoinGecko(crypto="bitcoin", currency="cad", cache_duration=30, live=fal
         Logger.log("FAILED");
         return "No Success";
       }
-    } catch {
+    } catch (e) {
       Logger.log("FAILED");
+      Logger.log(e)
       return "No Success";
     }
     
     Logger.log("ONLINE");
     var json_text = response.getContentText();
     var data = JSON.parse(json_text);
-    price = data["bitcoin"]["cad"]
+    price = data[crypto][currency]
 
     cache.put(cacheId, price, cacheDuration);
   }
