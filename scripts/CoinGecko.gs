@@ -17,7 +17,7 @@ function CoinGecko(crypto="bitcoin", currency="cad", cache_duration=30, live=tru
   let cacheDuration = 60 * cache_duration;
 
   // If there is data in cache, return directly.
-  const cacheId = "CoinGecko_" + currency + '_' + currency;
+  const cacheId = "CoinGecko_" + crypto + '_' + currency;
   let cache = CacheService.getDocumentCache();
   var cached = cache.get(cacheId);
 
